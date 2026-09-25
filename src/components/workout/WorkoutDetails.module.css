@@ -9,9 +9,7 @@
   align-items: start;
 }
 
-/* =========================
-   IMAGE
-========================= */
+
 
 .visualColumn {
   position: sticky;
@@ -53,9 +51,7 @@
   letter-spacing: 0.12em;
 }
 
-/* =========================
-   RIGHT CONTENT
-========================= */
+
 
 .contentColumn {
   min-width: 0;
@@ -87,9 +83,7 @@
   line-height: 1.7;
 }
 
-/* =========================
-   TAGS
-========================= */
+
 
 .tags {
   display: flex;
@@ -121,9 +115,7 @@
   text-transform: none;
 }
 
-/* =========================
-   SPECS CARD
-========================= */
+
 
 .panel {
   overflow: hidden;
@@ -169,9 +161,7 @@
   font-weight: 500;
 }
 
-/* =========================
-   INSTRUCTIONS
-========================= */
+
 
 .instructionsSection {
   margin-top: 34px;
@@ -223,9 +213,6 @@
   line-height: 1.6;
 }
 
-/* =========================
-   BUTTONS
-========================= */
 
 .actions {
   display: flex;
@@ -288,9 +275,7 @@
   transform: translateY(-2px);
 }
 
-/* =========================
-   TABLET
-========================= */
+
 
 @media (max-width: 1000px) {
   .detailsGrid {
@@ -306,9 +291,7 @@
   }
 }
 
-/* =========================
-   MOBILE
-========================= */
+
 
 @media (max-width: 720px) {
   .detailsSection {
@@ -340,9 +323,7 @@
   }
 }
 
-/* =========================
-   SMALL MOBILE
-========================= */
+
 
 @media (max-width: 460px) {
   .imageWrapper {
