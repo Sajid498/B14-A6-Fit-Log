@@ -1,22 +1,32 @@
+import MyPlanClient from "@/components/plan/MyPlanClient";
+import styles from "@/components/plan/MyPlan.module.css";
+
 export const metadata = {
   title: "My Plan | FitLog",
+  description:
+    "Manage today's workout plan and saved exercises in FitLog.",
 };
 
 export default function MyPlanPage() {
   return (
-    <section className="page-section">
+    <section className={styles.planSection}>
       <div className="container">
-        <p className="section-eyebrow">YOUR WORKOUT</p>
+        <div className={styles.header}>
+          <p className={styles.eyebrow}>
+            YOUR WORKOUT
+          </p>
 
-        <h1 className="page-title">MY PLAN</h1>
+          <h1 className={styles.title}>
+            MY PLAN
+          </h1>
 
-        <p className="page-description">
-          Cap of five lifts for today. Finish them, then load more.
-        </p>
-
-        <div className="temporary-library">
-          Your workout plan will be built here soon.
+          <p className={styles.subtitle}>
+            Cap of five lifts for today.
+            Finish them, then load more.
+          </p>
         </div>
+
+        <MyPlanClient />
       </div>
     </section>
   );
