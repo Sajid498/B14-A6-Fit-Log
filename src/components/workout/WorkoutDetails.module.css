@@ -1,13 +1,17 @@
 .detailsSection {
-  padding: 70px 0 100px;
+  padding: 40px 0 85px;
 }
 
 .detailsGrid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 70px;
+  gap: 48px;
   align-items: start;
 }
+
+/* =========================
+   IMAGE
+========================= */
 
 .visualColumn {
   position: sticky;
@@ -15,182 +19,175 @@
 }
 
 .imageWrapper {
-  position: relative;
-  min-height: 650px;
+  height: 610px;
   overflow: hidden;
-  border: 1px solid #292d33;
-  background: #101216;
+
+  border: 1px solid #2b3036;
+  border-radius: 22px;
+
+  background: #171b21;
 }
 
 .workoutImage {
   width: 100%;
-  height: 650px;
+  height: 100%;
+
   display: block;
+
   object-fit: cover;
 }
 
 .imageFallback {
-  min-height: 650px;
+  width: 100%;
+  height: 100%;
+
   display: grid;
   place-items: center;
+
+  background: #171b21;
   color: #ccff00;
+
   font-family: var(--font-display), sans-serif;
-  font-size: 42px;
+  font-size: 38px;
   font-weight: 700;
   letter-spacing: 0.12em;
 }
 
-.imageWrapper::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(
-      to top,
-      rgba(9, 10, 12, 0.5),
-      transparent 40%
-    );
-}
-
-.imageLabel {
-  position: absolute;
-  left: 22px;
-  bottom: 22px;
-  z-index: 2;
-  padding: 7px 10px;
-  background: #ccff00;
-  color: #090a0c;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 0.12em;
-}
+/* =========================
+   RIGHT CONTENT
+========================= */
 
 .contentColumn {
   min-width: 0;
+  padding-top: 2px;
 }
+
+.title {
+  max-width: 720px;
+
+  font-family: var(--font-display), sans-serif;
+
+  font-size: clamp(2.8rem, 4vw, 4.2rem);
+  line-height: 1;
+
+  font-weight: 500;
+  letter-spacing: -0.02em;
+
+  text-transform: uppercase;
+}
+
+.description {
+  max-width: 650px;
+
+  margin-top: 18px;
+
+  color: #b6bac1;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================
+   TAGS
+========================= */
 
 .tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 20px;
+
+  margin-top: 18px;
+  margin-bottom: 28px;
 }
 
 .tag {
   display: inline-flex;
   align-items: center;
-  padding: 6px 10px;
-  border: 1px solid #ccff00;
-  color: #ccff00;
-  font-size: 10px;
+  justify-content: center;
+
+  min-height: 28px;
+
+  padding: 0 13px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: #ccff00;
+  color: #090a0c;
+
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+
+  text-transform: none;
 }
 
-.title {
-  font-family: var(--font-display), sans-serif;
-  font-size: clamp(3rem, 6vw, 5.6rem);
-  line-height: 0.98;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  text-transform: uppercase;
-}
-
-.description {
-  max-width: 700px;
-  margin-top: 24px;
-  color: #a0a3a9;
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-.quickStats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 28px;
-  margin-top: 30px;
-  padding: 18px 0;
-  border-top: 1px solid #292d33;
-  border-bottom: 1px solid #292d33;
-}
-
-.quickStat {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: #d1d3d6;
-  font-size: 13px;
-}
-
-.quickStat svg {
-  color: #ccff00;
-}
+/* =========================
+   SPECS CARD
+========================= */
 
 .panel {
-  margin-top: 40px;
-  border: 1px solid #292d33;
-  background: #101216;
-}
+  overflow: hidden;
 
-.sectionTitleRow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 18px 20px;
-  border-bottom: 1px solid #292d33;
-}
+  border: 1px solid #2a2f35;
+  border-radius: 22px;
 
-.sectionTitleRow svg {
-  color: #ccff00;
-}
-
-.sectionTitleRow h2,
-.instructionsSection h2 {
-  font-family: var(--font-display), sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-}
-
-.specTable {
-  padding: 0 20px;
+  background: #171b21;
 }
 
 .specRow {
+  min-height: 57px;
+
   display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 20px;
-  padding: 15px 0;
-  border-bottom: 1px solid #24282e;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+
+  gap: 22px;
+
+  padding: 0 20px;
+
+  border-bottom: 1px solid #292e34;
 }
 
 .specRow:last-child {
-  border-bottom: 0;
+  border-bottom: none;
 }
 
 .specRow span {
-  color: #73777f;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  color: #d4d6da;
+
+  font-family: var(--font-display), sans-serif;
+
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .specRow strong {
-  color: #f7f7f2;
+  color: #f5f5f0;
+
   font-size: 13px;
-  font-weight: 600;
-  text-align: right;
+  font-weight: 500;
 }
 
+/* =========================
+   INSTRUCTIONS
+========================= */
+
 .instructionsSection {
-  margin-top: 42px;
+  margin-top: 34px;
 }
 
 .instructionsSection h2 {
-  padding-bottom: 15px;
-  border-bottom: 1px solid #292d33;
+  margin-bottom: 14px;
+
+  font-family: var(--font-display), sans-serif;
+
+  font-size: 23px;
+  line-height: 1;
+
+  font-weight: 500;
+
+  text-transform: uppercase;
 }
 
 .instructions {
@@ -199,59 +196,75 @@
 
 .instruction {
   display: grid;
-  grid-template-columns: 45px 1fr;
-  gap: 17px;
-  padding: 19px 0;
-  border-bottom: 1px solid #24282e;
+  grid-template-columns: 26px 1fr;
+
+  gap: 6px;
+
+  padding: 6px 0;
 }
 
 .instructionNumber {
-  color: #ccff00;
-  font-family: var(--font-display), sans-serif;
-  font-size: 17px;
-  font-weight: 700;
+  color: #f4f4ee;
+
+  font-size: 12px;
 }
 
 .instruction p {
-  color: #b5b8bd;
-  font-size: 14px;
-  line-height: 1.7;
+  color: #c0c3c8;
+
+  font-size: 12px;
+  line-height: 1.55;
 }
 
 .noInstructions {
-  padding: 20px 0;
-  color: #888c93;
-  font-size: 14px;
+  color: #8f949c;
+
+  font-size: 13px;
+  line-height: 1.6;
 }
 
+/* =========================
+   BUTTONS
+========================= */
+
 .actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 38px;
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 22px;
 }
 
 .primaryButton,
 .secondaryButton {
-  min-height: 50px;
+  min-height: 40px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
-  padding: 0 18px;
+
+  gap: 7px;
+
+  padding: 0 15px;
+
+  border-radius: 12px;
+
   cursor: pointer;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.035em;
+
+  font-size: 10px;
+  font-weight: 800;
+
   transition:
-    background 0.2s ease,
+    transform 0.2s ease,
     border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .primaryButton {
   border: 1px solid #ccff00;
+
   background: #ccff00;
   color: #090a0c;
 }
@@ -262,7 +275,8 @@
 }
 
 .secondaryButton {
-  border: 1px solid #50545b;
+  border: 1px solid #555b63;
+
   background: transparent;
   color: #f7f7f2;
 }
@@ -270,82 +284,86 @@
 .secondaryButton:hover {
   border-color: #ccff00;
   color: #ccff00;
+
   transform: translateY(-2px);
 }
 
-.actionNote {
-  margin-top: 12px;
-  color: #62666d;
-  font-size: 11px;
-}
+/* =========================
+   TABLET
+========================= */
 
-
-
-@media (max-width: 950px) {
+@media (max-width: 1000px) {
   .detailsGrid {
-    gap: 35px;
+    gap: 32px;
   }
 
-  .imageWrapper,
-  .workoutImage,
-  .imageFallback {
-    min-height: 520px;
-    height: 520px;
+  .imageWrapper {
+    height: 530px;
   }
 
-  .actions {
-    grid-template-columns: 1fr;
-  }
-
-  .specRow {
-    grid-template-columns: 120px 1fr;
+  .title {
+    font-size: clamp(2.6rem, 5vw, 3.6rem);
   }
 }
 
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 720px) {
   .detailsSection {
-    padding: 35px 0 70px;
+    padding: 28px 0 65px;
   }
 
   .detailsGrid {
     grid-template-columns: 1fr;
+
+    gap: 30px;
   }
 
   .visualColumn {
     position: static;
   }
 
-  .imageWrapper,
-  .workoutImage,
-  .imageFallback {
-    min-height: 420px;
-    height: 420px;
+  .imageWrapper {
+    height: 440px;
+
+    border-radius: 20px;
   }
 
   .title {
-    font-size: clamp(2.8rem, 14vw, 4.4rem);
+    font-size: clamp(2.7rem, 12vw, 4rem);
+  }
+
+  .panel {
+    border-radius: 20px;
   }
 }
 
+/* =========================
+   SMALL MOBILE
+========================= */
+
 @media (max-width: 460px) {
-  .imageWrapper,
-  .workoutImage,
-  .imageFallback {
-    min-height: 330px;
-    height: 330px;
+  .imageWrapper {
+    height: 350px;
+
+    border-radius: 18px;
   }
 
   .specRow {
-    grid-template-columns: 1fr;
-    gap: 7px;
-  }
+    grid-template-columns: 1fr 1fr;
 
-  .specRow strong {
-    text-align: left;
+    padding: 0 15px;
   }
 
   .actions {
-    gap: 10px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
   }
 }

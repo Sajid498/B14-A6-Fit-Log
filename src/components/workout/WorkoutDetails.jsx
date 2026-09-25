@@ -3,10 +3,6 @@
 import {
   Bookmark,
   CalendarPlus,
-  Clock3,
-  Dumbbell,
-  Flame,
-  Star,
 } from "lucide-react";
 import { toast } from "react-toastify";
 
@@ -38,7 +34,9 @@ function getMuscleGroups(workout) {
 }
 
 function formatDuration(duration) {
-  if (!duration) return "N/A";
+  if (!duration) {
+    return "N/A";
+  }
 
   if (typeof duration === "number") {
     return `${duration} min`;
@@ -92,18 +90,23 @@ export default function WorkoutDetails({ workout }) {
     workout.description ??
     "Build strength, improve technique, and train with intent.";
 
-  const equipment = getEquipmentText(workout.equipment);
+  const equipment =
+    getEquipmentText(workout.equipment);
 
-  const muscleGroups = getMuscleGroups(workout);
+  const muscleGroups =
+    getMuscleGroups(workout);
 
   const difficulty =
-    workout.difficulty ?? "Not specified";
+    workout.difficulty ??
+    "Not specified";
 
   const sets =
-    workout.sets ?? "N/A";
+    workout.sets ??
+    "N/A";
 
   const reps =
-    workout.reps ?? "N/A";
+    workout.reps ??
+    "N/A";
 
   const duration =
     workout.duration ??
@@ -115,11 +118,13 @@ export default function WorkoutDetails({ workout }) {
     workout.kcal;
 
   const rating =
-    workout.rating ?? "N/A";
+    workout.rating ??
+    "N/A";
 
-  const instructions = Array.isArray(workout.instructions)
-    ? workout.instructions
-    : [];
+  const instructions =
+    Array.isArray(workout.instructions)
+      ? workout.instructions
+      : [];
 
   const alreadyInPlan =
     isInTodayPlan(workout);
@@ -162,18 +167,26 @@ export default function WorkoutDetails({ workout }) {
                   className={styles.workoutImage}
                 />
               ) : (
-                <div className={styles.imageFallback}>
+                <div
+                  className={
+                    styles.imageFallback
+                  }
+                >
                   FITLOG
                 </div>
               )}
-
-              <div className={styles.imageLabel}>
-                WORKOUT LIBRARY
-              </div>
             </div>
           </div>
 
           <div className={styles.contentColumn}>
+            <h1 className={styles.title}>
+              {name}
+            </h1>
+
+            <p className={styles.description}>
+              {description}
+            </p>
+
             <div className={styles.tags}>
               {muscleGroups.map((group) => (
                 <span
@@ -185,112 +198,91 @@ export default function WorkoutDetails({ workout }) {
               ))}
             </div>
 
-            <h1 className={styles.title}>
-              {name}
-            </h1>
-
-            <p className={styles.description}>
-              {description}
-            </p>
-
-            <div className={styles.quickStats}>
-              <div className={styles.quickStat}>
-                <Clock3 size={18} />
-                <span>
-                  {formatDuration(duration)}
-                </span>
-              </div>
-
-              <div className={styles.quickStat}>
-                <Flame size={18} />
-                <span>
-                  {formatCalories(calories)}
-                </span>
-              </div>
-
-              <div className={styles.quickStat}>
-                <Star size={18} />
-                <span>{rating}</span>
-              </div>
-            </div>
-
             <section className={styles.panel}>
-              <div className={styles.sectionTitleRow}>
-                <Dumbbell size={19} />
-
-                <h2>KEY SPECS</h2>
+              <div className={styles.specRow}>
+                <span>EQUIPMENT</span>
+                <strong>{equipment}</strong>
               </div>
 
-              <div className={styles.specTable}>
-                <div className={styles.specRow}>
-                  <span>EQUIPMENT</span>
-                  <strong>{equipment}</strong>
-                </div>
+              <div className={styles.specRow}>
+                <span>DIFFICULTY</span>
+                <strong>{difficulty}</strong>
+              </div>
 
-                <div className={styles.specRow}>
-                  <span>DIFFICULTY</span>
-                  <strong>{difficulty}</strong>
-                </div>
+              <div className={styles.specRow}>
+                <span>SETS</span>
+                <strong>{sets}</strong>
+              </div>
 
-                <div className={styles.specRow}>
-                  <span>SETS</span>
-                  <strong>{sets}</strong>
-                </div>
+              <div className={styles.specRow}>
+                <span>REPS</span>
+                <strong>{reps}</strong>
+              </div>
 
-                <div className={styles.specRow}>
-                  <span>REPS</span>
-                  <strong>{reps}</strong>
-                </div>
+              <div className={styles.specRow}>
+                <span>DURATION</span>
+                <strong>
+                  {formatDuration(duration)}
+                </strong>
+              </div>
 
-                <div className={styles.specRow}>
-                  <span>DURATION</span>
-                  <strong>
-                    {formatDuration(duration)}
-                  </strong>
-                </div>
+              <div className={styles.specRow}>
+                <span>CALORIES</span>
+                <strong>
+                  {formatCalories(calories)}
+                </strong>
+              </div>
 
-                <div className={styles.specRow}>
-                  <span>CALORIES</span>
-                  <strong>
-                    {formatCalories(calories)}
-                  </strong>
-                </div>
-
-                <div className={styles.specRow}>
-                  <span>RATING</span>
-                  <strong>{rating}</strong>
-                </div>
+              <div className={styles.specRow}>
+                <span>RATING</span>
+                <strong>{rating}</strong>
               </div>
             </section>
 
-            <section className={styles.instructionsSection}>
+            <section
+              className={
+                styles.instructionsSection
+              }
+            >
               <h2>INSTRUCTIONS</h2>
 
               {instructions.length > 0 ? (
-                <ol className={styles.instructions}>
-                  {instructions.map((instruction, index) => (
-                    <li
-                      key={`${index}-${instruction}`}
-                      className={styles.instruction}
-                    >
-                      <span
+                <ol
+                  className={
+                    styles.instructions
+                  }
+                >
+                  {instructions.map(
+                    (instruction, index) => (
+                      <li
+                        key={`${index}-${instruction}`}
                         className={
-                          styles.instructionNumber
+                          styles.instruction
                         }
                       >
-                        {String(index + 1).padStart(
-                          2,
-                          "0",
-                        )}
-                      </span>
+                        <span
+                          className={
+                            styles.instructionNumber
+                          }
+                        >
+                          {index + 1}.
+                        </span>
 
-                      <p>{instruction}</p>
-                    </li>
-                  ))}
+                        <p>
+                          {instruction}
+                        </p>
+                      </li>
+                    ),
+                  )}
                 </ol>
               ) : (
-                <p className={styles.noInstructions}>
-                  No instructions available for this workout.
+                <p
+                  className={
+                    styles.noInstructions
+                  }
+                >
+                  No instructions available for
+                  this workout.
                 </p>
               )}
             </section>
@@ -298,10 +290,12 @@ export default function WorkoutDetails({ workout }) {
             <div className={styles.actions}>
               <button
                 type="button"
-                className={styles.primaryButton}
+                className={
+                  styles.primaryButton
+                }
                 onClick={handleAddToPlan}
               >
-                <CalendarPlus size={18} />
+                <CalendarPlus size={16} />
 
                 <span>
                   {alreadyInPlan
@@ -312,10 +306,12 @@ export default function WorkoutDetails({ workout }) {
 
               <button
                 type="button"
-                className={styles.secondaryButton}
+                className={
+                  styles.secondaryButton
+                }
                 onClick={handleSaveForLater}
               >
-                <Bookmark size={18} />
+                <Bookmark size={16} />
 
                 <span>
                   {alreadySaved

@@ -12,17 +12,12 @@ export default function MyPlanPage() {
     <section className={styles.planSection}>
       <div className="container">
         <div className={styles.header}>
-          <p className={styles.eyebrow}>
-            YOUR WORKOUT
-          </p>
-
           <h1 className={styles.title}>
             MY PLAN
           </h1>
 
           <p className={styles.subtitle}>
-            Cap of five lifts for today.
-            Finish them, then load more.
+            Cap of five lifts for today. Finish them, then load more.
           </p>
         </div>
 

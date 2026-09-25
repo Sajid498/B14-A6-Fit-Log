@@ -15,23 +15,14 @@ export default function Home() {
       >
         <div className="container">
           <div className="section-heading">
-            <div>
-              <p className="section-eyebrow">
-                WORKOUTS
-              </p>
-
-              <h2>THE LIBRARY</h2>
-            </div>
+            <h2>THE LIBRARY</h2>
 
             <p className="section-description">
-              Twelve lifts covering every major
-              muscle group.
+              Twelve lifts covering every major muscle group.
             </p>
           </div>
 
-          <Suspense
-            fallback={<WorkoutLoading />}
-          >
+          <Suspense fallback={<WorkoutLoading />}>
             <WorkoutLibrary />
           </Suspense>
         </div>

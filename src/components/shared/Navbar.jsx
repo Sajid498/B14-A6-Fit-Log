@@ -17,10 +17,10 @@ export default function Navbar() {
 
   const workoutActive =
     pathname === "/" ||
-    pathname.startsWith("/workout");
+    pathname.startsWith("/workout/");
 
   const planActive =
-    pathname.startsWith("/my-plan");
+    pathname === "/my-plan";
 
   return (
     <header className="navbar-wrapper">

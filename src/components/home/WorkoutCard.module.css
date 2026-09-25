@@ -8,6 +8,7 @@
   display: block;
   overflow: hidden;
   border: 1px solid #292d33;
+  border-radius: 20px;
   background: #101216;
   transition:
     transform 0.22s ease,
@@ -62,6 +63,7 @@
 
 .tag {
   padding: 5px 8px;
+  border-radius: 999px;
   background: #ccff00;
   color: #090a0c;
   font-size: 10px;
@@ -121,12 +123,13 @@
   place-items: center;
   padding: 30px;
   border: 1px solid #34383e;
+  border-radius: 20px;
   background: #101216;
   color: #a5a8ad;
   text-align: center;
 }
 
-
+/* Loading */
 
 .loadingGrid {
   display: grid;
@@ -137,6 +140,7 @@
 .loadingCard {
   overflow: hidden;
   border: 1px solid #292d33;
+  border-radius: 20px;
   background: #101216;
 }
 
@@ -153,7 +157,7 @@
 .loadingLineLarge,
 .loadingLineMedium,
 .loadingLineSmall {
-  border-radius: 2px;
+  border-radius: 8px;
   background: #1f2328;
   animation: pulse 1.2s ease-in-out infinite;
 }
@@ -192,7 +196,7 @@
   }
 }
 
-
+/* Tablet */
 
 @media (max-width: 950px) {
   .grid,
@@ -201,7 +205,7 @@
   }
 }
 
-
+/* Mobile */
 
 @media (max-width: 620px) {
   .grid,
