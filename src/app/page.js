@@ -1,27 +1,39 @@
+import { Suspense } from "react";
+
 import Hero from "@/components/home/Hero";
+import WorkoutLibrary from "@/components/home/WorkoutLibrary";
+import WorkoutLoading from "@/components/home/WorkoutLoading";
 
 export default function Home() {
   return (
     <>
       <Hero />
 
-      <section id="library" className="library-section">
+      <section
+        id="library"
+        className="library-section"
+      >
         <div className="container">
           <div className="section-heading">
             <div>
-              <p className="section-eyebrow">WORKOUTS</p>
+              <p className="section-eyebrow">
+                WORKOUTS
+              </p>
 
               <h2>THE LIBRARY</h2>
             </div>
 
             <p className="section-description">
-              Twelve lifts covering every major muscle group.
+              Twelve lifts covering every major
+              muscle group.
             </p>
           </div>
 
-          <div className="temporary-library">
-            Workout cards will be added in the next step.
-          </div>
+          <Suspense
+            fallback={<WorkoutLoading />}
+          >
+            <WorkoutLibrary />
+          </Suspense>
         </div>
       </section>
     </>
