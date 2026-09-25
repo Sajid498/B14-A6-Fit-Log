@@ -1,0 +1,105 @@
+.loadingPage {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+}
+
+.loadingContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.loader {
+  position: relative;
+  width: 74px;
+  height: 74px;
+  margin-bottom: 24px;
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border: 3px solid #292d33;
+  border-top-color: #ccff00;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+.innerRing {
+  position: absolute;
+  inset: 12px;
+  border: 2px solid #292d33;
+  border-bottom-color: #ccff00;
+  border-radius: 50%;
+  animation: spinReverse 0.7s linear infinite;
+}
+
+.title {
+  font-family: var(--font-display), sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.text {
+  margin-top: 10px;
+  color: #8f939a;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.dots::after {
+  content: "";
+  animation: dots 1.4s steps(4, end) infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinReverse {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes dots {
+  0% {
+    content: "";
+  }
+
+  25% {
+    content: ".";
+  }
+
+  50% {
+    content: "..";
+  }
+
+  75%,
+  100% {
+    content: "...";
+  }
+}
+
+@media (max-width: 560px) {
+  .loadingPage {
+    min-height: 60vh;
+  }
+
+  .loader {
+    width: 64px;
+    height: 64px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+}

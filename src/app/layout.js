@@ -32,7 +32,9 @@ export default function RootLayout({ children }) {
           <div className="site-wrapper">
             <Navbar />
 
-            <main className="site-main">{children}</main>
+            <main className="site-main">
+              {children}
+            </main>
 
             <Footer />
           </div>
