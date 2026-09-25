@@ -1,8 +1,12 @@
 import { Inter, Oswald } from "next/font/google";
+import { ToastContainer } from "react-toastify";
+
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
 
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
+import { WorkoutProvider } from "@/context/WorkoutContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,13 +28,25 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.variable} ${oswald.variable}`}>
-        <div className="site-wrapper">
-          <Navbar />
+        <WorkoutProvider>
+          <div className="site-wrapper">
+            <Navbar />
 
-          <main className="site-main">{children}</main>
+            <main className="site-main">{children}</main>
 
-          <Footer />
-        </div>
+            <Footer />
+          </div>
+
+          <ToastContainer
+            position="top-right"
+            autoClose={2200}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            pauseOnHover
+            theme="dark"
+          />
+        </WorkoutProvider>
       </body>
     </html>
   );

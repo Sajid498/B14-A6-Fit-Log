@@ -4,13 +4,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { useWorkouts } from "@/context/WorkoutContext";
+
 export default function Navbar() {
   const pathname = usePathname();
 
-  const workoutActive =
-    pathname === "/" || pathname.startsWith("/workout");
+  const {
+    planCount,
+    savedCount,
+    isLoaded,
+  } = useWorkouts();
 
-  const planActive = pathname.startsWith("/my-plan");
+  const workoutActive =
+    pathname === "/" ||
+    pathname.startsWith("/workout");
+
+  const planActive =
+    pathname.startsWith("/my-plan");
 
   return (
     <header className="navbar-wrapper">
@@ -31,7 +41,9 @@ export default function Navbar() {
           <Link
             href="/"
             className={`nav-link ${
-              workoutActive ? "nav-link-active" : ""
+              workoutActive
+                ? "nav-link-active"
+                : ""
             }`}
           >
             Workout
@@ -40,7 +52,9 @@ export default function Navbar() {
           <Link
             href="/my-plan"
             className={`nav-link ${
-              planActive ? "nav-link-active" : ""
+              planActive
+                ? "nav-link-active"
+                : ""
             }`}
           >
             My Plan
@@ -48,14 +62,26 @@ export default function Navbar() {
         </div>
 
         <div className="nav-badges">
-          <Link href="/my-plan" className="plan-badge">
+          <Link
+            href="/my-plan"
+            className="plan-badge"
+          >
             <span>Plan</span>
-            <strong>0</strong>
+
+            <strong>
+              {isLoaded ? planCount : 0}
+            </strong>
           </Link>
 
-          <Link href="/my-plan" className="saved-badge">
+          <Link
+            href="/my-plan"
+            className="saved-badge"
+          >
             <span>Saved</span>
-            <strong>0</strong>
+
+            <strong>
+              {isLoaded ? savedCount : 0}
+            </strong>
           </Link>
         </div>
       </nav>

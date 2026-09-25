@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Bookmark,
   CalendarPlus,
@@ -6,7 +8,9 @@ import {
   Flame,
   Star,
 } from "lucide-react";
+import { toast } from "react-toastify";
 
+import { useWorkouts } from "@/context/WorkoutContext";
 import styles from "./WorkoutDetails.module.css";
 
 function getEquipmentText(equipment) {
@@ -40,13 +44,18 @@ function formatDuration(duration) {
     return `${duration} min`;
   }
 
-  return String(duration).toLowerCase().includes("min")
+  return String(duration)
+    .toLowerCase()
+    .includes("min")
     ? duration
     : `${duration} min`;
 }
 
 function formatCalories(calories) {
-  if (calories === undefined || calories === null) {
+  if (
+    calories === undefined ||
+    calories === null
+  ) {
     return "N/A";
   }
 
@@ -61,6 +70,13 @@ function formatCalories(calories) {
 }
 
 export default function WorkoutDetails({ workout }) {
+  const {
+    addToTodayPlan,
+    saveForLater,
+    isInTodayPlan,
+    isSaved,
+  } = useWorkouts();
+
   const name =
     workout.name ??
     workout.title ??
@@ -104,6 +120,34 @@ export default function WorkoutDetails({ workout }) {
   const instructions = Array.isArray(workout.instructions)
     ? workout.instructions
     : [];
+
+  const alreadyInPlan =
+    isInTodayPlan(workout);
+
+  const alreadySaved =
+    isSaved(workout);
+
+  function handleAddToPlan() {
+    const result =
+      addToTodayPlan(workout);
+
+    if (result.success) {
+      toast.success(result.message);
+    } else {
+      toast.info(result.message);
+    }
+  }
+
+  function handleSaveForLater() {
+    const result =
+      saveForLater(workout);
+
+    if (result.success) {
+      toast.success(result.message);
+    } else {
+      toast.info(result.message);
+    }
+  }
 
   return (
     <section className={styles.detailsSection}>
@@ -246,8 +290,7 @@ export default function WorkoutDetails({ workout }) {
                 </ol>
               ) : (
                 <p className={styles.noInstructions}>
-                  No instructions available for this
-                  workout.
+                  No instructions available for this workout.
                 </p>
               )}
             </section>
@@ -256,28 +299,31 @@ export default function WorkoutDetails({ workout }) {
               <button
                 type="button"
                 className={styles.primaryButton}
+                onClick={handleAddToPlan}
               >
                 <CalendarPlus size={18} />
 
                 <span>
-                  ADD TO TODAY&apos;S PLAN
+                  {alreadyInPlan
+                    ? "IN TODAY'S PLAN"
+                    : "ADD TO TODAY'S PLAN"}
                 </span>
               </button>
 
               <button
                 type="button"
                 className={styles.secondaryButton}
+                onClick={handleSaveForLater}
               >
                 <Bookmark size={18} />
 
-                <span>SAVE FOR LATER</span>
+                <span>
+                  {alreadySaved
+                    ? "SAVED"
+                    : "SAVE FOR LATER"}
+                </span>
               </button>
             </div>
-
-            <p className={styles.actionNote}>
-              Plan and Saved functionality will be
-              connected in the next step.
-            </p>
           </div>
         </div>
       </div>
