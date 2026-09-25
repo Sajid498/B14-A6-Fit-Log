@@ -46,10 +46,16 @@ export default async function WorkoutLibrary() {
 
     return (
       <div className={styles.grid}>
-        {workouts.map((workout) => (
+        {workouts.map((workout, index) => (
           <WorkoutCard
-            key={workout.id ?? workout._id}
+            key={
+              workout.id ??
+              workout._id ??
+              workout.workoutId ??
+              index
+            }
             workout={workout}
+            index={index}
           />
         ))}
       </div>

@@ -9,13 +9,18 @@ function formatDuration(duration) {
     return `${duration} min`;
   }
 
-  return String(duration).toLowerCase().includes("min")
+  return String(duration)
+    .toLowerCase()
+    .includes("min")
     ? duration
     : `${duration} min`;
 }
 
 function formatCalories(calories) {
-  if (calories === undefined || calories === null) {
+  if (
+    calories === undefined ||
+    calories === null
+  ) {
     return "N/A";
   }
 
@@ -29,11 +34,22 @@ function formatCalories(calories) {
   return `${calories} kcal`;
 }
 
-export default function WorkoutCard({ workout }) {
-  const workoutId = workout.id ?? workout._id;
+export default function WorkoutCard({
+  workout,
+  index,
+}) {
+  const workoutId =
+    workout.id ??
+    workout._id ??
+    workout.workoutId ??
+    workout.workout_id ??
+    workout.slug ??
+    index + 1;
 
   const workoutName =
-    workout.name ?? workout.title ?? "Workout";
+    workout.name ??
+    workout.title ??
+    "Workout";
 
   const workoutImage =
     workout.image ??
@@ -41,7 +57,9 @@ export default function WorkoutCard({ workout }) {
     workout.thumbnail ??
     "";
 
-  const muscleGroups = Array.isArray(workout.muscleGroups)
+  const muscleGroups = Array.isArray(
+    workout.muscleGroups,
+  )
     ? workout.muscleGroups
     : Array.isArray(workout.tags)
       ? workout.tags
@@ -49,12 +67,15 @@ export default function WorkoutCard({ workout }) {
         ? [workout.category]
         : [];
 
-  const equipment = Array.isArray(workout.equipment)
+  const equipment = Array.isArray(
+    workout.equipment,
+  )
     ? workout.equipment.join(", ")
     : workout.equipment ?? "No equipment";
 
   const duration =
-    workout.duration ?? workout.durationMinutes;
+    workout.duration ??
+    workout.durationMinutes;
 
   const calories =
     workout.caloriesBurned ??
